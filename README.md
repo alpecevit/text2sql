@@ -18,7 +18,7 @@ pip install -r requirements.txt
 
 Run `inference.py` to evaluate individual test dataset samples.
 
-### OR
+*OR*
 
 Consider downloading the model directly from [HuggingFace](https://huggingface.co/alpecevit/flan-t5-base-text2sql) and run on custom inputs.
 
