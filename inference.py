@@ -1,6 +1,6 @@
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import evaluate
-from torch.utils.data import DataLoader
+import torch
 from datasets import Dataset
 from processor.Processor import Processor
 import random
@@ -11,9 +11,10 @@ warnings.filterwarnings('ignore')
 INPUT_MAX_LENGTH = 1024
 TARGET_MAX_LENGTH = 128
 MODEL_ID = "flan-t5-base-text2sql"
+DEVICE = 'cuda' if torch.cuda.is_available() else 'mps'
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
-model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_ID).to("mps")
+model = AutoModelForSeq2SeqLM.from_pretrained(MODEL_ID).to(DEVICE)
 metric = evaluate.load("rouge")
 processor = Processor(tokenizer, metric, INPUT_MAX_LENGTH, TARGET_MAX_LENGTH)
 
@@ -31,7 +32,7 @@ ex_query = eval_data['query'][random_integer]
 ex_question = eval_data['question'][random_integer]
 
 # tokenize the ex_input
-token_input = tokenizer(ex_input, return_tensors="pt").input_ids.to("mps")
+token_input = tokenizer(ex_input, return_tensors="pt").input_ids.to(DEVICE)
 
 # generate SQL query
 output = model.generate(token_input, max_new_tokens=processor.target_max_length)
