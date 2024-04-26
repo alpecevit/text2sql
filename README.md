@@ -1,6 +1,6 @@
 # FLAN-T5 Base Text to SQL Model
 
-The training repository for the [text2sql model](https://huggingface.co/alpecevit/flan-t5-base-text2sql) includes the datasets used for evaluation and training, along with scripts for training, evaluation, and inference. You can find individual datasets listed below.
+The training repository for the [text2sql model](https://huggingface.co/alpecevit/flan-t5-base-text2sql) that includes the datasets used for evaluation and training, along with scripts for training, evaluation, and inference. You can find individual datasets listed below.
 
 - [SParC](https://yale-lily.github.io/sparc)
 - [Spider](https://yale-lily.github.io/spider)
