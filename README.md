@@ -16,7 +16,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-Run `inference.py` to evaluate individual test dataset samples.
+Run `inference.py` to evaluate test dataset samples.
 
 *OR*
 
